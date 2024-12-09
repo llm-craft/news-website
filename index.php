@@ -1,6 +1,20 @@
 <?php
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // API key for NewsAPI
 define('API_KEY', '19077d1472b34f7e9af28a8a2fddabe6');
+
+// Handle CORS for API requests
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('HTTP/1.1 200 OK');
+    exit();
+}
 
 /**
  * Function to fetch news articles based on a keyword
